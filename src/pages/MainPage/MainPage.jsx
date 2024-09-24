@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
+import { FaBasketShopping } from "react-icons/fa6";
 import "./MainPage.scss";
+import { FaBars } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "react-router-dom";
 import Skeleton from "../../components/Skeleton/Skeleton";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Pagination from "../../components/Pagination/Pagination";
-import { useSearchParams } from "react-router-dom";
 import { BasketCard } from "../../components/BasketCard/BasketCard";
 import { FilterCard } from "../../components/FilterCard/FilterCard";
-import { FaBars } from "react-icons/fa";
 import { MobileFilter } from "../../components/MobileFilter/MobileFilter";
-import { FaBasketShopping } from "react-icons/fa6";
 import { MobileCheckout } from "../../components/MobileCheckout/MobileCheckout";
 
 export const MainPage = () => {
   let [searchParams, setSearchParams] = useSearchParams();
   let searchText = searchParams.get("search");
+  const [search, setSearch] = useState(searchText);
 
   const [products, setProducts] = useState([]);
   const [listedProducts, setListedProducts] = useState([]);
@@ -130,7 +131,7 @@ export const MainPage = () => {
     });
   }, [checkedModel, products]);
 
-  const { isLoading, isSuccess, refetch, error } = useQuery({
+  const { isLoading, isSuccess, refetch } = useQuery({
     queryKey: [`"product-list-${searchText}"`],
     queryFn: async () => {
       const response = await fetch(
@@ -148,7 +149,7 @@ export const MainPage = () => {
               .toLocaleLowerCase()
               .indexOf(searchText.toLocaleLowerCase()) !== -1
         );
-      setCurrentPage(1);
+
       setProducts(data);
       setListedProducts(data);
 
@@ -172,8 +173,17 @@ export const MainPage = () => {
   });
 
   useEffect(() => {
+    setSearch((prev) => {
+      if (prev !== searchText) {
+        changePage(1);
+      }
+      return searchText;
+    });
+  }, [searchText]);
+
+  useEffect(() => {
     refetch();
-  }, [refetch, searchText]);
+  }, [search, refetch]);
 
   return (
     <div className="mt-4 row">
