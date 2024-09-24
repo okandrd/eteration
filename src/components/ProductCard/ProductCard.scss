@@ -1,0 +1,48 @@
+@import "../../assets/styles/colors.scss";
+.product-card {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 4px;
+
+  .product-image {
+    width: 100%;
+    border-radius: 4px;
+    object-fit: contain;
+    aspect-ratio: 1.333333;
+  }
+
+  .product-price {
+    margin-top: 12px;
+    font-size: 16px;
+    color: $color-primary;
+  }
+
+  .product-title {
+    margin-top: 4px;
+    font-size: 16px;
+    color: $color-black;
+    font-weight: 500;
+    flex: 1;
+  }
+
+  .add-to-cart {
+    margin-top: 16px;
+    border-radius: 4px;
+    border: none;
+    background-color: $color-primary;
+    padding: 4px;
+    width: 100%;
+    font-size: 16px;
+
+    &:hover {
+      background-color: $color-primary-dark;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+}

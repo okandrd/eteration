@@ -1,0 +1,60 @@
+@import "../../assets//styles/colors.scss";
+
+.header {
+  height: 60px;
+  background-color: $color-primary;
+  padding: 4px 0px;
+
+  @media screen and (max-width: 768px) {
+    height: 90px;
+
+    .header-bar {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .logo {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .search {
+    background-color: #ffffff;
+    padding: 4px 8px;
+    height: 100%;
+    width: 260px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
+    input {
+      background-color: #ffffff;
+      border: none;
+      margin-left: 8px;
+      flex: 1;
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    input,
+    .search-icon {
+      color: $color-black;
+    }
+  }
+
+  .basket,
+  .user {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

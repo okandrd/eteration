@@ -1,0 +1,44 @@
+@import "../../assets/styles/colors.scss";
+.product-container {
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 8px;
+  border-radius: 4px;
+
+  .product-image {
+    width: 100%;
+    object-fit: contain;
+    aspect-ratio: 4/3;
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+
+    .product-name {
+      font-size: 24px;
+    }
+
+    .product-price {
+      color: $color-primary;
+    }
+
+    .add-to-cart {
+      background-color: $color-primary;
+      padding: 4px;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: $color-primary-dark;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+
+    .product-description {
+      margin-top: 12px;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../assets/styles/colors.scss";
+
+.products .col-xl-3:nth-child(n + 5) {
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .products .col-6:nth-child(n + 3) {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .products .col-md-4:nth-child(n + 4) {
+    margin-top: 8px;
+  }
+}
+
+.mobile-filter {
+  background-color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  width: fit-content;
+  background-color: $color-primary;
+  color: #ffffff;
+}
